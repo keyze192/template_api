@@ -1,7 +1,7 @@
-import { createClient } from '@supabase/supabase-js'
+const  { createClient } = require ('@supabase/supabase-js')
 
 
-const supabase = createClient('https://dfdpmsikmcvhpzngdhev.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmZHBtc2lrbWN2aHB6bmdkaGV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ3Nzk0ODgsImV4cCI6MjA2MDM1NTQ4OH0.aib2WAphitLGyVScTbSJV1-D04rhcNU81iQELZCPUIY')
+const supabase = createClient('https://tuxorvjpbxowdqyasaas.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR1eG9ydmpwYnhvd2RxeWFzYWFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMwNjc2ODIsImV4cCI6MjA0ODY0MzY4Mn0.68NueKN3OwSGCIHcyJR9PyJ2h5Xo2zB_rX8BXsjMB8w')
 
 
 
@@ -10,26 +10,13 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-app.get('/students', async (req, res) => {
+app.get('/brand_car', async (req, res) => {
   const { data, error } = await supabase
-  .from('students')
+  .from('brand_car')
   .select()
-  res.send('список студентов')
+  res.send(data)
 })
 
-app.post('/students', (req, res) => {
-  res.send('добавление студентов')
-})
-
-app.delete('/students', (req, res) => {
-  res.send('удаление студентов')
-})
-
-app.put('/students', (req, res) => {
-  res.send('изменение студентов')
-})
-
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(port, ()=> {
+  console.log('Example app istening on port ${port}')
 })
